@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username','name', 'email','image','gender','course_id','batch_id', 'password','address','phone',
     ];
 
     /**
@@ -28,6 +28,24 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
+    public function role()
+    {
+        return $this->belongsTo('App\Role');
+    }
+
+    public function courses()
+    {
+        return $this->hasMany('App\Course');
+    }
+    public function documents()
+    {
+        return $this->hasMany('App\Document');
+    }
+    public function batch()
+    {
+        return $this->belongsTo('App\Batch');
+    }
     /**
      * The attributes that should be cast to native types.
      *
